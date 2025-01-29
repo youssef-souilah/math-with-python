@@ -53,7 +53,7 @@ print("Descente de Gradient pour f(x,y)")
 alpha = float(input('Entrer le taux d\'apprentissage alpha :')) 
 max_iter = int(input('Entrer le nombre maximal d\'itérations max:')) 
 x0 , y0= 0,0
-if (alpha>0 and max_iter>=100):
+if (alpha>0 and max_iter>=20):
     tracer(des_grad(x0,y0,alpha,fun_df_dx,fun_df_dy,max_iter),fun_f)
 else:
-    print('alpha doit etre positif ! et le max doit etre >=100 !!!!')
+    print('alpha doit etre positif ! et le max doit etre >=20 !!!!')
