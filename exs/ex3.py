@@ -2,8 +2,8 @@ import numpy as np
 import sympy as sp
 import matplotlib.pyplot as plt
 
-x,y,z =sp.symbols("x,y,z")
-f= x**2+y**2+z**2+x*y+y*z+z*x+x+y+z
+x,y,z =sp.symbols("x y z")
+f= (x**2)+(y**2)+(z**2)+(x*y)+(y*z)+(z*x)+x+y+z
 df_dx=sp.diff(f,x)
 df_dy=sp.diff(f,y)
 df_dz=sp.diff(f,z)
