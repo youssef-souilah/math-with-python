@@ -13,9 +13,9 @@ df_dx = sp.diff(f, x)
 df_dy = sp.diff(f, y)
 
 # Conversion en fonctions Python pour l'évaluation rapide
-fun_df_dx = sp.lambdify((x, y), df_dx, "numpy")
-fun_df_dy = sp.lambdify((x, y), df_dy, "numpy")
-fun_f = sp.lambdify((x, y), f, "numpy")
+fun_df_dx = sp.lambdify((x, y), df_dx)
+fun_df_dy = sp.lambdify((x, y), df_dy )
+fun_f = sp.lambdify((x, y), f)
 
 
 
@@ -35,7 +35,7 @@ def des_grad(x0,y0,alpha,fun_df_dx,fun_df_dy,max):
 
 
 def tracer (points,fun_f):
-    X, Y = np.meshgrid(np.linspace(-10, 10, 100), np.linspace(-10, 10, 100))
+    X, Y = np.meshgrid(np.linspace(-20, 20, 1000), np.linspace(-20, 20, 1000))
     Z = fun_f(X, Y)
 
     plt.figure(figsize=(8, 6))
@@ -48,12 +48,32 @@ def tracer (points,fun_f):
     plt.title("Descente de gradient pour f(x, y)")
     plt.show()
 
+def tracer_3d(points, fun_f):
+    X, Y = np.meshgrid(np.linspace(-20, 20, 100), np.linspace(-20, 20, 100))
+    Z = fun_f(X, Y)
+    
+    fig = plt.figure(figsize=(10, 7))
+    ax = fig.add_subplot(111, projection='3d')
+    ax.plot_surface(X, Y, Z, cmap='viridis', alpha=0.7)
+    
+    px, py = zip(*points)
+    pz = [fun_f(x, y) for x, y in points]
+    ax.scatter(px, py, pz, color='red', marker='o', s=50, label='Descente de gradient')
+    
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_zlabel('f(x, y)')
+    ax.set_title('Descente de gradient pour f(x, y)')
+    ax.legend()
+    
+    plt.show()
+
 # parametres
 print("Descente de Gradient pour f(x,y)")
 alpha = float(input('Entrer le taux d\'apprentissage alpha :')) 
 max_iter = int(input('Entrer le nombre maximal d\'itérations max:')) 
 x0 , y0= 0,0
 if (alpha>0 and max_iter>=20):
-    tracer(des_grad(x0,y0,alpha,fun_df_dx,fun_df_dy,max_iter),fun_f)
+    tracer_3d(des_grad(x0,y0,alpha,fun_df_dx,fun_df_dy,max_iter),fun_f)
 else:
     print('alpha doit etre positif ! et le max doit etre >=20 !!!!')

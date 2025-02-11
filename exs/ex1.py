@@ -28,7 +28,7 @@ def des_grad(x0,alpha,fun_df,max):
     return points
 
 def tracer(points,fun_f):
-    X = np.linspace(-4, 4, 400)
+    X = np.linspace(-40 ,40, 4000)
     Y = fun_f(X)
     plt.figure(figsize=(8, 6))
     plt.plot(X, Y, label="f(x)")
@@ -44,7 +44,7 @@ def tracer(points,fun_f):
 print("Descente de Gradient pour f(x) = 2(x+2)sin(3x+1)")
 alpha = float(input('Entrer le taux d\'apprentissage alpha :')) 
 max_iter = int(input('Entrer le nombre maximal d\'itérations max:')) 
-x0 = 0
+x0 = -10
 if (alpha>0 and max_iter>=100):
     tracer(des_grad(x0,alpha,_fun_df,max_iter),_fun_f)
 else:
