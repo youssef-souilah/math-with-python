@@ -16,7 +16,10 @@ def des_grad(fun_df_dx,fun_df_dy,fun_df_dz,alpha,max):
     cur_x,cur_y,cur_z=0,0,0
     points=[(cur_x,cur_y,cur_z)]
     for i in range(max):
-        grad_x,grad_y,grad_z=fun_df_dx(cur_x,cur_y,cur_z),fun_df_dy(cur_x,cur_y,cur_z),fun_df_dz(cur_x,cur_y,cur_z)
+        
+        grad_x=fun_df_dx(cur_x,cur_y,cur_z)
+        grad_y=fun_df_dy(cur_x,cur_y,cur_z)
+        grad_z=fun_df_dz(cur_x,cur_y,cur_z)
         
         new_x=cur_x-alpha*grad_x
         new_y=cur_y-alpha*grad_y
