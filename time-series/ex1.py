@@ -11,6 +11,6 @@ df['avg5'] = df['y'].rolling(window=5, center=True).mean()
 
 result = df[['t', 'année', 'trim', 'y', 'avg3', 'avg5']]
 
-# result.to_excel("resulat.xlsx", index=False)
+result.to_excel("resulat.xlsx", index=False)
 
-print(result.head(10))
+print(result)
